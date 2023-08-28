@@ -14,25 +14,31 @@ function TaskList() {
     setTasks(updatedTasks);
   };
 
-  const handleTaskDelete = (index) => {
+  const handleTaskDelete = (index, e) => {
+    e.stopPropagation();
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
   };
 
   return (
-    <div>
+    <div className="task-list-container">
+      <h2>Task List</h2>
       <TaskForm addTask={addTask} />
-      <h2>Lista zadań</h2>
-      <ul>
+      <ul className="task-list">
         {tasks.map((taskObj, index) => (
           <li
             key={index}
-            className={taskObj.completed ? 'completed' : ''}
+            className={`task-item ${taskObj.completed ? 'completed' : ''}`}
+            onClick={() => handleTaskClick(index)}
           >
-            <span onClick={() => handleTaskClick(index)}>
-              {taskObj.task}
-            </span>
-            <button onClick={() => handleTaskDelete(index)}>Usuń</button>
+            <div className="task-text-container">
+              <span className="task-text">{taskObj.task}</span>
+            </div>
+            <div className="delete-button-container">
+              <button className="delete-button" onClick={(e) => handleTaskDelete(index, e)}>
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>

@@ -16,14 +16,16 @@ function TaskForm({ addTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
         type="text"
         value={taskText}
         onChange={handleTaskTextChange}
-        placeholder="Dodaj nowe zadanie"
+        placeholder="Add a new task"
       />
-      <button type="submit">Dodaj</button>
+      <button className="add-button" type="submit">
+        Add
+      </button>
     </form>
   );
 }
