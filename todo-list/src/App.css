@@ -33,6 +33,14 @@ h2 {
   color: #888; /* Change to your desired text color */
 }
 
+.task-item:hover {
+  background-color: #f0f0f0;
+}
+
+.task-item:hover .task-text {
+  color: #555;
+}
+
 .delete-button-container {
   position: relative;
 }
